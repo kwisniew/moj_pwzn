@@ -11,10 +11,7 @@ def xrange(start_stop, stop=None, step=None):
         stop       = tmp
     while(start_stop < stop):
         yield start_stop
-        #lista.append(start_stop)
         start_stop +=step
-    #print(lista)
-    #yield lista
     
 y = list(xrange(5))
 x=list(range(5))

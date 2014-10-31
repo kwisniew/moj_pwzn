@@ -2,17 +2,12 @@
 
 import pickle
 import pathlib
+import operator
+from operator import itemgetter
 
 
 def load_animals(large_dataset=False):
-    """
 
-    :param bool large_dataset: Jeśli wartość to True zwraca 1E6 zwierząt, w
-                               przeciwnym razie 1E5. Test będzie odbywał się
-                               przy 1E6 zwierząt.
-
-    :return: Lista zwierząt
-    """
     file_name = 'animals-small.bin' if not large_dataset else 'animals.bin'
     file = pathlib.Path(__file__).parent / file_name
     with open(str(file), 'rb') as f:
@@ -20,7 +15,52 @@ def load_animals(large_dataset=False):
 
 
 def filter_animals(animal_list):
+    
+    m=None
+    f=None
+    genus = None
+    noe = []
+    
+    print(len(animal_list))
+    animal_list.sort(key=itemgetter('genus', 'name'))
+    print(len(animal_list))
+    genus = animal_list[0]['genus']
+    for ii in animal_list:       
+        if genus==ii['genus']:
+            if ii['sex']=='male':
+                if m==None:
+                    m=ii
+                elif m['mass'] > ii['mass']:
+                    m=ii
+            elif ii['sex']=='female':
+                if f==None:
+                    f=ii
+                elif f['mass'] > ii['mass']:
+                    f=ii
+        else:           
+            noe.append(f)
+            noe.append(m)
+            genus=ii['genus']
+            if ii['sex']=='male':
+                m=ii
+                f=None
+            else:
+                m=None
+                f=ii
+    noe.append(f)
+    noe.append(m)
+                
+             
+    print(len(noe))   
+    return noe
+    #print(noe)
+    #noe.sort(key=itemgetter('genus', 'name'))
+    #for i in noe[0:100]:
+    #    print(i)
+    
     """
+    
+
     Jesteś informatykiem w firmie Noe Shipping And Handling. Firma ta zajmuje
     się międzykontynentalnym przewozem zwierząt.
 
@@ -51,5 +91,6 @@ def filter_animals(animal_list):
     :param animal_list:
     """
 
-if __name__ == "__main__":
-    animals = load_animals()
+#if __name__ == "__main__":
+animals = load_animals()
+filter_animals(animals)
