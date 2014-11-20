@@ -85,4 +85,4 @@ def suggester(input, data):
      ('i', 0.014705882352941176)]
     """
     
-#suggester("aleksa", load_data("/opt/pwzn/zaj5/enwiki-20140903-pages-articles_part_0.xmlascii.bin"))   
+suggester("aleksa", load_data("/opt/pwzn/zaj5/enwiki-20140903-pages-articles_part_0.xmlascii.bin"))   

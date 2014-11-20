@@ -28,17 +28,18 @@ def calculate_neighbours(board):
 
     Podpowiedź II: Proszę uważać na komówki na bokach i rogach planszy.
     """
-    temp = np.zeros(board.shape)
-    temp[:-1,:] += board[1:,:]
-    temp[1:,:] += board[:-1,:]
-    temp[:,:-1] += board[:,1:]
-    temp[:,1:] += board[:,:-1]
+    Wynik = np.zeros_like(board)
 
-    temp[:-1,:-1] += board[1:,1:]
-    temp[1:,1:] += board[:-1,:-1]
-    temp[1:,:-1] += board[:-1,1:]
-    temp[:-1,1:] += board[1:,:-1]
-    return temp
+    Wynik[:,1:] += board[:,:-1]
+    Wynik[:,:-1] += board[:,1:]
+    Wynik[1:,:] += board[:-1,:]
+    Wynik[:-1,:] += board[:1,:]   
+    Wynik[1:,:-1] += board[:-1,1:]
+    Wynik[:-1,:-1] += board[:1,1:]
+    Wynik[1:,1:] += board[:-1,:-1]
+    Wynik[:-1,1:] += board[:1,:-1]
+    
+    return Wynik
 #print(calculate_neighbours(np.ones((10,10))))
 
 def iterate(board):
