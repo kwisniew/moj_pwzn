@@ -28,10 +28,25 @@ def calculate_neighbours(board):
 
     Podpowiedź II: Proszę uważać na komówki na bokach i rogach planszy.
     """
+    Wynik = np.zeros_like(board)
 
+    Wynik[:,1:] += board[:,:-1]
+    Wynik[:,:-1] += board[:,1:]
+    Wynik[1:,:] += board[:-1,:]
+    Wynik[:-1,:] += board[:1,:]   
+    Wynik[1:,:-1] += board[:-1,1:]
+    Wynik[:-1,:-1] += board[:1,1:]
+    Wynik[1:,1:] += board[:-1,:-1]
+    Wynik[:-1,1:] += board[:1,:-1]
+    
+    return Wynik
+print(calculate_neighbours(np.ones((10,10))))
 
 def iterate(board):
 
+    Neig = calculate_neighbours(board)
+    board = (Neig==3) and (board==0) +1
+    return board
     """
 
     Funkcja pobiera planszę game of life i zwraca jej następną iterację.

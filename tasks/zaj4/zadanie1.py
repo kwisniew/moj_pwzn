@@ -4,17 +4,9 @@ import numpy as np
 
 
 def linear_func(x, a, b):
-    """
-    Funkcja ta zwraca wyznacza a*x + b, funkcja ta powinna działać bez względu
-    na to czy x to tablica numpy czy liczba zmiennoprzecinkowa.
+    return a*x+b
 
-    Podpowiedź: Nie jest to bardzo trudne.
-
-    :param np.ndarray x:
-    :param float a:
-    :param float b:
-    """
-
+print(linear_func(np.arange(5,10,1),3,1))
 
 def chisquared(xy, a, b):
     """
@@ -35,8 +27,11 @@ def chisquared(xy, a, b):
     :param float b:
     :return:
     """
-
-
+    f_x=linear_func(xy[:,0],a,b)
+    chi_2 = sum(( (xy[:,1] - f_x)/xy[:,2])**2)
+    return chi_2
+    
+print(chisquared(np.ones((10,3)),5,2))
 def least_sq(xy):
     """
     Funkcja liczy parametry funkcji liniowej ax+b do danych za pomocą metody
@@ -49,3 +44,9 @@ def least_sq(xy):
     :param xy: Jak w chisquared, uwaga: sigma_y nie jest potrzebne.
     :return: Krotka
     """
+    N=len(xy[:,0])
+    Delta = N*np.sum(xy[:,0]**2) - (np.sum(xy[:,0])**2)
+    A = (np.sum(xy[:,0]**2)*np.sum(xy[:,1])-np.sum(xy[:,0])*np.sum(xy[:,1]*xy[:,0]))/Delta
+    B = (N*np.sum(xy[:,1]*xy[:,0])-np.sum(xy[:,0])*np.sum(xy[:,1]))/Delta
+    return (A,B)
+print(least_sq(np.ones((10,3))))
