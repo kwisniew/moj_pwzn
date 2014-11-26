@@ -27,7 +27,6 @@ class Integrator(object):
         return value
 
 
-
 if __name__ == '__main__':
     i = Integrator(3)
     print(i.integrate(math.sin, (0, 2*math.pi), 30))
