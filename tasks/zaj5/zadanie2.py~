@@ -11,19 +11,19 @@ class InvalidFormatError(IOError):
 def load_data(filename):
 
     if os.path.getsize(filename) < 30:
-        print("1 bardzo")
+        print("1")
         raise InvalidFormatError
     s = struct.Struct("=16s3H2I")
     with open(filename, 'rb') as f:
         data = mmap.mmap(f.fileno(), 0, mmap.MAP_SHARED, mmap.PROT_READ)
         header = s.unpack(data[:30])
     if header[0] == '6o\xfdo\xe2\xa4C\x90\x98\xb2t!\xbeurn':
-        print("2 cie")
+        print("2")
         raise InvalidFormatError
     if not header[1] == 3:
-        print("3 lu")
+        print("3")
         raise InvalidFormatError
     if not 30+header[4]*header[5] == len(data):
-        print("4 bie")
+        print("4")
         raise InvalidFormatError
     return 0
