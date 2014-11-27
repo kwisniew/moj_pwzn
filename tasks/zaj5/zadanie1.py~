@@ -3,6 +3,7 @@ from numpy import char
 import mmap
 import struct
 import numpy as np
+import operator
 
 def next_item(input):
     
@@ -22,7 +23,7 @@ def load_data(path):
         ("ngram", np.dtype("a7")),
         ("count", np.dtype("uint32"))])
 
-    data = np.memmap(path, dtype=dtype)
+    data = np.memmap(path, dtype=dtype, mode="r")
     return data
     """
     Funkcja która ładuje dane z pliku zawierającego ngramy. Plik ten jest
@@ -41,11 +42,11 @@ def suggester(input, data):
 
    # wynik = np.logical_equal(input,data[:,0])
     to_be_inserted = [input, next_item(input)]
-    numb = np.searchsorted(data, to_be_inserted)
-    suma = np.sum(data[numb[0]:numb[1], 1])
+    numb = np.searchsorted(data["ngram"], to_be_inserted)
+    suma = np.sum(data["count"][numb[0]:numb[1]])
     lista = []
-    for i in range(numb[1],numb[2]):
-        lista = (data[i,0][6],data[i,1]/suma)
+    for i in range(numb[0],numb[1]):
+        lista = (data["ngram"][i][-1],data["count"][i]/suma)
     lista = sorted(lista, key=operator.itemgetter(1))
     return lista
     #next_item(input)
@@ -85,4 +86,4 @@ def suggester(input, data):
      ('i', 0.014705882352941176)]
     """
     
-suggester("aleksa", load_data("/opt/pwzn/zaj5/enwiki-20140903-pages-articles_part_0.xmlascii.bin"))   
+#suggester("aleksa", load_data("/opt/pwzn/zaj5/enwiki-20140903-pages-articles_part_0.xmlascii.bin"))   
