@@ -2,6 +2,7 @@
 from numpy import char
 import mmap
 import struct
+import operator
 import numpy as np
 
 def next_item(input):
@@ -18,6 +19,7 @@ def next_item(input):
 
 
 def load_data(path):
+    #path="/home/kon/Documents/pwzn/dane/enwiki-20140903-pages-articles_part_1.xmlascii.bin"
     dtype = np.dtype([
         ("ngram", np.dtype("a7")),
         ("count", np.dtype("uint32"))])
@@ -45,7 +47,7 @@ def suggester(input, data):
     suma = np.sum(data[numb[0]:numb[1], 1])
     lista = []
     for i in range(numb[1],numb[2]):
-        lista = (data[i,0][6],data[i,1]/suma)
+        lista.append( (data[i,0][6],data[i,1]/suma) )
     lista = sorted(lista, key=operator.itemgetter(1))
     return lista
     #next_item(input)
