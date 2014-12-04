@@ -19,7 +19,7 @@ def next_item(input):
 
 
 def load_data(path):
-    path="/home/kon/Documents/pwzn/dane/enwiki-20140903-pages-articles_part_1.xmlascii.bin"
+    #path="/home/kon/Documents/pwzn/dane/enwiki-20140903-pages-articles_part_1.xmlascii.bin"
     mytype = np.dtype([
         ("ngram", np.dtype('a7')),
         ("count", np.uint32)])
@@ -97,15 +97,15 @@ def suggester(input, data):
     """
     
 #suggester("aleksa", load_data("/opt/pwzn/zaj5/enwiki-20140903-pages-articles_part_0.xmlascii.bin"))   
-data=load_data("/home/kon/Documents/pwzn/dane/enwiki-20140903-pages-articles_part_1.xmlascii.bin")
-print(chr(data['ngram'][0][0]))
-print(data['count'][0]/100)
-print(next_item('pytho'))
-print(len(data))
+#data=load_data("/home/kon/Documents/pwzn/dane/enwiki-20140903-pages-articles_part_1.xmlascii.bin")
+#print(chr(data['ngram'][0][0]))
+#print(data['count'][0]/100)
+#print(next_item('pytho'))
+#print(len(data))
 #to_be_inserted = ['python', next_item('python')]
 #numb = np.searchsorted(data['ngram'], to_be_inserted)
 #suma = np.sum(data["count"][numb[0]:numb[1]])
 #print(to_be_inserted)
 #print(numb)
 #print(suma)
-print(suggester('python', data))
+#print(suggester('python', data))
