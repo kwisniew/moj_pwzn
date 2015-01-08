@@ -1,0 +1,18 @@
+In file included from /usr/lib64/python3.4/site-packages/numpy/core/include/numpy/ndarraytypes.h:1804:0,
+                 from /usr/lib64/python3.4/site-packages/numpy/core/include/numpy/ndarrayobject.h:17,
+                 from /usr/lib64/python3.4/site-packages/numpy/core/include/numpy/arrayobject.h:4,
+                 from /home/kon/.pyxbld/temp.linux-x86_64-3.4/pyrex/zaj8.c:232:
+/usr/lib64/python3.4/site-packages/numpy/core/include/numpy/npy_1_7_deprecated_api.h:15:2: warning: #warning "Using deprecated NumPy API, disable it by " "#defining NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION" [-Wcpp]
+ #warning "Using deprecated NumPy API, disable it by " \
+  ^
+In file included from /usr/lib64/python3.4/site-packages/numpy/core/include/numpy/ndarrayobject.h:26:0,
+                 from /usr/lib64/python3.4/site-packages/numpy/core/include/numpy/arrayobject.h:4,
+                 from /home/kon/.pyxbld/temp.linux-x86_64-3.4/pyrex/zaj8.c:232:
+/usr/lib64/python3.4/site-packages/numpy/core/include/numpy/__multiarray_api.h:1629:1: warning: ‘_import_array’ defined but not used [-Wunused-function]
+ _import_array(void)
+ ^
+In file included from /usr/lib64/python3.4/site-packages/numpy/core/include/numpy/ufuncobject.h:317:0,
+                 from /home/kon/.pyxbld/temp.linux-x86_64-3.4/pyrex/zaj8.c:233:
+/usr/lib64/python3.4/site-packages/numpy/core/include/numpy/__ufunc_api.h:241:1: warning: ‘_import_umath’ defined but not used [-Wunused-function]
+ _import_umath(void)
+ ^

@@ -47,4 +47,3 @@ cpdef int quicksort(np.ndarray[np.float64_t, ndim=1] list, int start, int end):
 		quicksort(list, split+1, end)
 	return 0
 
-

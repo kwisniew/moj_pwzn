@@ -14,4 +14,3 @@ zaj8.quicksort(numpy.random.rand(1000000), 0, (1000000-1))
 b=time.monotonic()
 
 print(b-a)
-
