@@ -1,13 +1,17 @@
 import time
 
-
-import pyximport; pyximport.install()
+import numpy
+import pyximport
+pyximport.install(setup_args={
+                              "include_dirs":numpy.get_include()},
+                  reload_support=True)
 import zaj8 
 
-import numpy as np
+
 
 a=time.monotonic()
-zaj8.quicksort(np.random.rand(1000000), 0, (1000000-1))
+zaj8.quicksort(numpy.random.rand(1000000), 0, (1000000-1))
 b=time.monotonic()
 
 print(b-a)
+
