@@ -1,0 +1,14 @@
+  Running setup.py install for cython
+    Skipping implicit fixer: buffer
+    Skipping implicit fixer: idioms
+    Skipping implicit fixer: set_literal
+    Skipping implicit fixer: ws_comma
+    cythoning /tmp/pip_build_root/cython/Cython/Plex/Scanners.py to /tmp/pip_build_root/cython/Cython/Plex/Scanners.c
+    building 'Cython.Plex.Scanners' extension
+    gcc -pthread -Wno-unused-result -Werror=declaration-after-statement -DNDEBUG -fmessage-length=0 -grecord-gcc-switches -O2 -Wall -D_FORTIFY_SOURCE=2 -fstack-protector -funwind-tables -fasynchronous-unwind-tables -g -DOPENSSL_LOAD_CONF -fPIC -I/usr/include/python3.4m -c /tmp/pip_build_root/cython/Cython/Plex/Scanners.c -o build/temp.linux-x86_64-3.4/tmp/pip_build_root/cython/Cython/Plex/Scanners.o
+    /tmp/pip_build_root/cython/Cython/Plex/Scanners.c:16:20: fatal error: Python.h: Nie ma takiego pliku ani katalogu
+     #include "Python.h"
+                        ^
+    compilation terminated.
+    error: command 'gcc' failed with exit status 1
+
